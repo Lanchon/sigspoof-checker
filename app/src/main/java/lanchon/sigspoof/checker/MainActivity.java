@@ -1,4 +1,4 @@
-package lanchon.sigspoofchecker;
+package lanchon.sigspoof.checker;
 
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
