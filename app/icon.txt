@@ -1,0 +1,1 @@
+https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html#foreground.type=clipart&foreground.space.trim=1&foreground.space.pad=0.4&foreground.clipart=res%2Fclipart%2Ficons%2Fcommunication_vpn_key.svg&foreColor=e00000%2C0&crop=0&backgroundShape=hrect&backColor=00a000%2C100&effects=shadow
