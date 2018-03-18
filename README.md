@@ -11,4 +11,9 @@ This program is free software: you can redistribute it and/or modify it under th
 terms of the GNU General Public License as published by the Free Software Foundation,
 either version 3 of the License, or (at your option) any later version.
 
-### [DOWNLOAD THE APP](https://github.com/Lanchon/sigspoof-checker/releases)
+### Download the app
+
+<a href="https://f-droid.org/packages/lanchon.sigspoof.checker/" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+
+or in the [release section](https://github.com/Lanchon/sigspoof-checker/releases)
