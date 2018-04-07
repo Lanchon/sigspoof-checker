@@ -3,6 +3,9 @@ package lanchon.sigspoof.checker;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +13,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String SPOOF_PERMISSION = "android.permission.FAKE_PACKAGE_SIGNATURE";
+    private static final int SPOOF_REQUEST_CODE = 1;
 
     private RelativeLayout mainRelativeLayout;
     private TextView statusTextView;
@@ -26,12 +32,31 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         updateSpoofStatus();
+        requestSpoofRuntimePermission();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         updateSpoofStatus();
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        if (requestCode == SPOOF_REQUEST_CODE) {
+            updateSpoofStatus();
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    protected void requestSpoofRuntimePermission() {
+        if (ContextCompat.checkSelfPermission(this, SPOOF_PERMISSION)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{SPOOF_PERMISSION},
+                    SPOOF_REQUEST_CODE);
+        }
     }
 
     protected void updateSpoofStatus() {
