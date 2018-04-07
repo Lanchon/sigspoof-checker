@@ -81,10 +81,10 @@ public class MainActivity extends AppCompatActivity {
 
     protected void setSpoofStatus(boolean enabled) {
         if (enabled) {
-            mainRelativeLayout.setBackgroundColor(getResources().getColor(R.color.spoofStatusEnabled));
+            mainRelativeLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.spoofStatusEnabled));
             statusTextView.setText(R.string.spoofStatusEnabled);
         } else {
-            mainRelativeLayout.setBackgroundColor(getResources().getColor(R.color.spoofStatusDisabled));
+            mainRelativeLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.spoofStatusDisabled));
             statusTextView.setText(R.string.spoofStatusDisabled);
         }
     }
