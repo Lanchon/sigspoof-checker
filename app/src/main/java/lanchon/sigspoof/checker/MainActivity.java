@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
+
     private static final String SPOOF_PERMISSION_NAME = "android.permission.FAKE_PACKAGE_SIGNATURE";
     private static final int SPOOF_PERMISSION_REQUEST_CODE = 1;
 
@@ -73,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException("Got " + signatures.length + " signatures");
         }
         String signatureString = signatures[0].toCharsString();
-        Log.i("MainActivity", "Reported signature: " + signatureString);
+        Log.i(TAG, "Reported signature: " + signatureString);
         setSpoofStatus(getString(R.string.fake_signature).equals(signatureString));
     }
 
