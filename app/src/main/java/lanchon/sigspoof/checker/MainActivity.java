@@ -3,7 +3,6 @@ package lanchon.sigspoof.checker;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
-import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +13,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String SPOOF_PERMISSION = "android.permission.FAKE_PACKAGE_SIGNATURE";
-    private static final int SPOOF_REQUEST_CODE = 1;
+    private static final String SPOOF_PERMISSION_NAME = "android.permission.FAKE_PACKAGE_SIGNATURE";
+    private static final int SPOOF_PERMISSION_REQUEST_CODE = 1;
 
     private RelativeLayout mainRelativeLayout;
     private TextView statusTextView;
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         updateSpoofStatus();
-        requestSpoofRuntimePermission();
+        requestSpoofPermission();
     }
 
     @Override
@@ -41,23 +40,26 @@ public class MainActivity extends AppCompatActivity {
         updateSpoofStatus();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == SPOOF_REQUEST_CODE) {
-            updateSpoofStatus();
-        } else {
-            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    // Request Signature Spoofing Runtime Permission
+
+    protected void requestSpoofPermission() {
+        if (ContextCompat.checkSelfPermission(this, SPOOF_PERMISSION_NAME) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[] { SPOOF_PERMISSION_NAME }, SPOOF_PERMISSION_REQUEST_CODE);
         }
     }
 
-    protected void requestSpoofRuntimePermission() {
-        if (ContextCompat.checkSelfPermission(this, SPOOF_PERMISSION)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{SPOOF_PERMISSION},
-                    SPOOF_REQUEST_CODE);
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        switch (requestCode) {
+            case SPOOF_PERMISSION_REQUEST_CODE: {
+                updateSpoofStatus();
+                return;
+            }
         }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
+    // Report Signature Spoofing Functional Status
 
     protected void updateSpoofStatus() {
         PackageInfo packageInfo;
@@ -67,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
             throw new RuntimeException(e);
         }
         Signature[] signatures = packageInfo.signatures;
-        if (signatures.length != 1) throw new RuntimeException("Got " + signatures.length + " signatures");
+        if (signatures.length != 1) {
+            throw new RuntimeException("Got " + signatures.length + " signatures");
+        }
         String signatureString = signatures[0].toCharsString();
         Log.i("MainActivity", "Reported signature: " + signatureString);
         setSpoofStatus(getString(R.string.fake_signature).equals(signatureString));
