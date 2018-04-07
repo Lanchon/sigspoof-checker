@@ -15,4 +15,7 @@ either version 3 of the License, or (at your option) any later version.
 - [Lanchon](https://github.com/Lanchon): Initial version.
 - [SpiritCroc](https://github.com/SpiritCroc): Added runtime permission requests.
 
-### [DOWNLOAD THE APP](https://github.com/Lanchon/sigspoof-checker/releases)
+### Download
+
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80"
+    >](https://f-droid.org/packages/lanchon.sigspoof.checker/)
