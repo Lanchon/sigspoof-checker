@@ -1,5 +1,4 @@
 # Signature Spoofing Checker
-### By Lanchon
 
 This Android app tests the signature spoofing capability of your OS as required by
 the [microG Project](https://microg.org/). The app attempts to fake its own signature
@@ -10,5 +9,10 @@ You can find more information about signature spoofing
 This program is free software: you can redistribute it and/or modify it under the
 terms of the GNU General Public License as published by the Free Software Foundation,
 either version 3 of the License, or (at your option) any later version.
+
+### Contributors
+
+- [Lanchon](https://github.com/Lanchon): Initial version.
+- [SpiritCroc](https://github.com/SpiritCroc): Added runtime permission requests.
 
 ### [DOWNLOAD THE APP](https://github.com/Lanchon/sigspoof-checker/releases)
