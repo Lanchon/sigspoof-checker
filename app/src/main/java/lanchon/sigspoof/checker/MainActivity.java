@@ -3,10 +3,10 @@ package lanchon.sigspoof.checker;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mainRelativeLayout = (RelativeLayout) findViewById(R.id.mainRelativeLayout);
-        statusTextView = (TextView) findViewById(R.id.statusTextView);
+        mainRelativeLayout = findViewById(R.id.mainRelativeLayout);
+        statusTextView = findViewById(R.id.statusTextView);
     }
 
     @Override
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
     protected void requestSpoofPermission() {
         if (ContextCompat.checkSelfPermission(this, SPOOF_PERMISSION_NAME) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[] { SPOOF_PERMISSION_NAME }, SPOOF_PERMISSION_REQUEST_CODE);
+            ActivityCompat.requestPermissions(this, new String[]{SPOOF_PERMISSION_NAME}, SPOOF_PERMISSION_REQUEST_CODE);
         }
     }
 
