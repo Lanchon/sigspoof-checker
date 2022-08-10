@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/sigspoof-checker.iml" filepath="$PROJECT_DIR$/sigspoof-checker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sigspoof-checker.iml" filepath="$PROJECT_DIR$/.idea/modules/sigspoof-checker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/sigspoof-checker.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/sigspoof-checker.app.iml" />
     </modules>
   </component>
 </project>
